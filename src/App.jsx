@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useLocalStorage } from './assets/hooks/localStorage';
+// import { useState } from 'react';
+// import { useLocalStorage } from './assets/hooks/localStorage';
 
 import ContactList from './components/ContactList/ContactList';
 import SearchBox from './components/SearchBox/SearchBox';
