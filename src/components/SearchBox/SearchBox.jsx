@@ -7,9 +7,10 @@ const SearchBox = ({ value, onSearch }) => {
       <label htmlFor={labelId}>
         <span>Search contact by name</span>
         <input
+          id={labelId}
           type="text"
           value={value}
-          onChange={e => onSearch(e.target.value)}
+          onChange={e => onSearch(e.currentTarget.value)}
         />
       </label>
     </div>

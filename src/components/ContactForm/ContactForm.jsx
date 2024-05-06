@@ -31,23 +31,29 @@ export const ContactForm = ({ createNewContact }) => {
           <span>New Contact</span>
           <input
             type="text"
+            minLength={3}
+            maxLength={50}
             id={labelId}
             value={formData.name}
             onChange={changeInput}
             placeholder="Enter contact name"
             name="name"
+            required="required"
           />
         </label>
 
         <label htmlFor={labelTelId}>
           <span>New Contact Number </span>
           <input
-            type="number"
+            minLength={3}
+            maxLength={50}
+            type="text"
             id={labelTelId}
             value={formData.number}
             onChange={changeInput}
             placeholder="Enter cell number"
             name="number"
+            required="required"
           />
         </label>
 

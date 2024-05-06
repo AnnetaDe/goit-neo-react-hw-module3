@@ -1,18 +1,27 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
-export const UseLocalStorage = (key, defaultValue) => {
-  const [value, setValue] = useState(() => {
-    let currentValue;
-    try {
-      currentValue = JSON.parse(localStorage.getItem(key)) ?? defaultValue;
-    } catch (error) {
-      currentValue = defaultValue;
-    }
-    return currentValue;
-  });
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
-  }, [value, key]);
-  console.log('value', value);
-  return [value, setValue];
-};
+// export const UseLocalStorage = (storageKey, defaultValue) => {
+//   const [formData, setFormData] = useState(defaultValue);
+//   console.log('formData:', formData);
+//   useEffect(() => {
+//     try {
+//       const storedData = localStorage.getItem(storageKey);
+//       if (storedData) {
+//         setFormData(JSON.parse(storedData));
+//       }
+//     } catch (error) {
+//       console.error('Error:', error);
+//     }
+//   }, [storageKey]);
+//   useEffect(() => {
+//     try {
+//       localStorage.setItem(storageKey, JSON.stringify(formData));
+//     } catch (error) {
+//       console.error('Error:', error);
+//     }
+//   }, [formData, storageKey]);
+//   return [formData, setFormData];
+// };
+
+// Usage
+// import { UseLocalStorage } from './localStorage';

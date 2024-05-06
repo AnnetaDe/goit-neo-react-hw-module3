@@ -1,0 +1,20 @@
+.contactFormik {
+  font-family: var(--font-family);
+  font-size: 14px;
+  padding: 24px 8px;
+  position: relative;
+  width: 300px;
+  align-items: left;
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.formikLiBtn {
+  position: absolute;
+  right: 8px;
+  top: 24px;
+}
+.formikLiBtn:hover {
+  cursor: pointer;
+  background-color: #0ed39e;
+}

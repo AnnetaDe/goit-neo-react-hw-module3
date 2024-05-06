@@ -1,0 +1,55 @@
+.formikForm {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family);
+  margin: 20px 20px;
+  width: 300px;
+  box-shadow: var(--main-box-shadow);
+  padding: 20px;
+  border: 1px solid #000;
+  border-radius: var(--main-border-radius);
+
+  .formikButton {
+    width: 100%;
+    padding: 5px;
+    margin-top: 20px;
+
+    border: 1px solid rgb(55, 36, 105);
+    border-radius: var(--main-border-radius);
+    background-color: rgb(55, 36, 105);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: #0ed39e;
+      color: rgb(55, 36, 105);
+    }
+  }
+}
+
+.labelSpan {
+  display: inline-block;
+  color: rgb(55, 36, 105);
+  font-size: 14px;
+  padding-top: 20px;
+}
+.label {
+  width: 100%;
+  display: block;
+}
+.input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.error {
+  display: block;
+  position: absolute;
+  color: red;
+  font-size: 12px;
+
+  width: 100%;
+}
