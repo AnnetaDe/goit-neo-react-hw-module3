@@ -1,0 +1,35 @@
+:root {
+  --main-bg-color-light: #f0f0f0;
+  --main-text-color: #000000;
+  --main-border-color: #797070;
+  --main-border-radius: 5px;
+  --main-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  --main-bg-color-dark: #494949;
+  --main-bg-color-medium: #a5a3a3;
+  --font-family: 'Montserrat', sans-serif;
+  --font-sixe: 14px;
+}
+ul,
+ol,
+p {
+  margin-block: 0;
+  padding-inline: 0;
+  margin-inline: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  padding: 10px 30px;
+  border: 1px solid rgb(55, 36, 105);
+  border-radius: var(--main-border-radius);
+  background-color: rgb(55, 36, 105);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #b6ba43;
+    color: rgb(55, 36, 105);
+  }
+}

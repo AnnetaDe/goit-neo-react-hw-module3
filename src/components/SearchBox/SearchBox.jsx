@@ -1,9 +1,17 @@
 import s from './SearchBox.module.css';
-
-const SearchBox = () => {
+import { useId } from 'react';
+const SearchBox = ({ value, onSearch }) => {
+  const labelId = useId();
   return (
-    <div>
-      <h1>Search Box</h1>
+    <div className={s.searchBox}>
+      <label htmlFor={labelId}>
+        <span>Search contact by name</span>
+        <input
+          type="text"
+          value={value}
+          onChange={e => onSearch(e.target.value)}
+        />
+      </label>
     </div>
   );
 };
