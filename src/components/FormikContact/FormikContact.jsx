@@ -1,5 +1,4 @@
 import s from './FormikContact.module.css';
-
 export const FormikContact = ({ id, name, number, onDelete }) => {
   return (
     <li className={s.contactFormik}>

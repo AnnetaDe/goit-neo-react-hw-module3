@@ -17,7 +17,6 @@ function App() {
   data.forEach(contact => {
     contact.id = nanoid();
   });
-
   const [formData, setFormData] = useState(() => {
     let currentData;
     try {
@@ -38,7 +37,6 @@ function App() {
     }
     return currentData;
   });
-
   const [search, setSearch] = useState(() => '', [formData]);
   const [searchFormik, setSearchFormik] = useState(() => '', [formikData]);
   useEffect(() => {
@@ -47,28 +45,24 @@ function App() {
   useEffect(() => {
     localStorage.setItem('formik', JSON.stringify(formikData));
   });
-
   const updateForm = formData => {
     setFormData(prev => [...prev, formData]);
   };
   const updateFormik = formikData => {
     setFormikData(prev => [...prev, formikData]);
   };
-
   const killContact = taskId => {
     setFormData(prev => [...prev.filter(contact => contact.id !== taskId)]);
   };
   const killFormikContact = taskId => {
     setFormikData(prev => [...prev.filter(contact => contact.id !== taskId)]);
   };
-
   const visibleContacts = formData.filter(contact =>
     contact.name.toLowerCase().includes(search.toLowerCase())
   );
   const visibleFormikContacts = formikData.filter(contact =>
     contact.name.toLowerCase().includes(searchFormik.toLowerCase())
   );
-
   const formikHandleSubmit = (values, options) => {
     setTimeout(() => {
       alert(JSON.stringify(values, null, 2));
@@ -79,7 +73,6 @@ function App() {
     updateFormik({ ...values, id: nanoid() });
     options.resetForm();
   };
-
   return (
     <div>
       <h1>Phonebook</h1>
@@ -87,7 +80,6 @@ function App() {
       <ContactForm createNewContact={updateForm} />
       <SearchBox value={search} onSearch={setSearch} />
       <ContactList contacts={visibleContacts} onDelete={killContact} />
-
       <div>
         <h1>PhonebookFormik</h1>
         <FormikContactForm
@@ -103,5 +95,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

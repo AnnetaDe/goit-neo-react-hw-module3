@@ -2,10 +2,8 @@ import s from './FormikForm.module.css';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { formValidation } from './formValidation';
-
 export const FormikContactForm = ({ onSubmit }) => {
   const initialValues = { id: nanoid(), name: '', number: '' };
-
   return (
     <Formik
       initialValues={initialValues}
@@ -27,7 +25,6 @@ export const FormikContactForm = ({ onSubmit }) => {
             />
             <ErrorMessage name="name" component="span" className={s.error} />
           </label>
-
           <label>
             <span className={s.labelSpan}>New Contact Number </span>
             <Field
