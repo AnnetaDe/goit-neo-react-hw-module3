@@ -1,7 +1,5 @@
-import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
 export const initialValue = {
-  id: nanoid,
   name: '',
   number: '',
 };
@@ -14,6 +12,9 @@ export const formValidation = Yup.object().shape({
     .trim('Не має містити пробілів'),
 
   number: Yup.string()
+
     .required('Номер телефону є обов’язковим')
-    .min(10, 'Має бути не менше 10-ти символів'),
+    .min(10, 'Має бути не менше 10-ти символів')
+    .matches(/^\d+$/, 'Має містити тільки цифри')
+    .trim('Не має містити пробілів'),
 });

@@ -1,9 +1,8 @@
 import s from './FormikForm.module.css';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { nanoid } from 'nanoid';
 import { formValidation } from './formValidation';
 export const FormikContactForm = ({ onSubmit }) => {
-  const initialValues = { id: nanoid(), name: '', number: '' };
+  const initialValues = { name: '', number: '' };
   return (
     <Formik
       initialValues={initialValues}

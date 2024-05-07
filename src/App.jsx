@@ -14,81 +14,46 @@ function App() {
     localStorage.clear();
     window.location.reload();
   };
-  data.forEach(contact => {
-    contact.id = nanoid();
-  });
-  const [formData, setFormData] = useState(() => {
-    let currentData;
-    try {
-      currentData = JSON.parse(localStorage.getItem('form')) ?? data;
-    } catch (error) {
-      console.error('Error:', error);
-      currentData = { id: nanoid(), name: '', number: '' };
-    }
-    return currentData;
-  });
-  const [formikData, setFormikData] = useState(() => {
-    let currentData;
-    try {
-      currentData = JSON.parse(localStorage.getItem('formik')) ?? data;
-    } catch (error) {
-      console.error('Error:', error);
-      currentData = { id: nanoid(), name: '', number: '' };
-    }
-    return currentData;
-  });
-  const [search, setSearch] = useState(() => '', [formData]);
-  const [searchFormik, setSearchFormik] = useState(() => '', [formikData]);
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(localStorage.getItem('contacts')) || data
+  );
+
+  const [search, setSearch] = useState('');
   useEffect(() => {
-    localStorage.setItem('form', JSON.stringify(formData));
-  });
-  useEffect(() => {
-    localStorage.setItem('formik', JSON.stringify(formikData));
-  });
-  const updateForm = formData => {
-    setFormData(prev => [...prev, formData]);
-  };
-  const updateFormik = formikData => {
-    setFormikData(prev => [...prev, formikData]);
-  };
-  const killContact = taskId => {
-    setFormData(prev => [...prev.filter(contact => contact.id !== taskId)]);
-  };
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
+
   const killFormikContact = taskId => {
-    setFormikData(prev => [...prev.filter(contact => contact.id !== taskId)]);
+    setContacts(prev => [...prev.filter(contact => contact.id !== taskId)]);
   };
-  const visibleContacts = formData.filter(contact =>
+  console.log(contacts);
+  const visibleContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(search.toLowerCase())
   );
-  const visibleFormikContacts = formikData.filter(contact =>
-    contact.name.toLowerCase().includes(searchFormik.toLowerCase())
-  );
+
   const formikHandleSubmit = (values, options) => {
     setTimeout(() => {
       alert(JSON.stringify(values, null, 2));
       options.setSubmitting(false);
     }, 200);
-    console.log(values);
-    console.log(options);
-    updateFormik({ ...values, id: nanoid() });
+
+    setContacts([...contacts, { ...values, id: nanoid() }]);
     options.resetForm();
   };
   return (
     <div>
       <h1>Phonebook</h1>
       <button onClick={onReload}>Restore </button>
-      <ContactForm createNewContact={updateForm} />
-      <SearchBox value={search} onSearch={setSearch} />
-      <ContactList contacts={visibleContacts} onDelete={killContact} />
+
       <div>
         <h1>PhonebookFormik</h1>
         <FormikContactForm
           formValidation={formValidation}
           onSubmit={formikHandleSubmit}
         />
-        <FormikSearchBox value={searchFormik} onSearch={setSearchFormik} />
+        <FormikSearchBox value={search} onSearch={setSearch} />
         <FormikContactList
-          contacts={visibleFormikContacts}
+          contacts={visibleContacts}
           onDelete={killFormikContact}
         />
       </div>
