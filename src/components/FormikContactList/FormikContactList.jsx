@@ -1,10 +1,10 @@
 import s from './FormikContactList.module.css';
-import { FormikContact } from '../FormikContact/FormikContact';
-export const FormikContactList = ({ contacts, onDelete }) => {
+import { Contact } from '../FormikContact/FormikContact';
+export const ContactList = ({ contacts, onDelete }) => {
   return (
     <ul className={s.contactsFormik}>
       {contacts.map(contact => (
-        <FormikContact li key={contact.id} {...contact} onDelete={onDelete} />
+        <Contact key={contact.id} {...contact} onDelete={onDelete} />
       ))}
     </ul>
   );

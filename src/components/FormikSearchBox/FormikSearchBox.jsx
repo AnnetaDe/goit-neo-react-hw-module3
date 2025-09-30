@@ -1,7 +1,7 @@
 import s from './FormikSearchBox.module.css';
 import { nanoid } from 'nanoid';
 import { Formik } from 'formik';
-export const FormikSearchBox = ({ value, onSearch }) => {
+export const SearchBox = ({ value, onSearch }) => {
   const labelId = nanoid();
   return (
     <Formik>

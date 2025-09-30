@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
 import './App.css';
 import data from './assets/contacts.json';
-import { FormikContactForm } from './components/FormikForm/FormikForm';
-import { FormikSearchBox } from './components/FormikSearchBox/FormikSearchBox';
-import { FormikContactList } from './components/FormikContactList/FormikContactList';
+import { ContactForm } from './components/FormikForm/FormikForm';
+import { SearchBox } from './components/FormikSearchBox/FormikSearchBox';
+import { ContactList } from './components/FormikContactList/FormikContactList';
 import { formValidation } from './components/FormikForm/formValidation';
 function App() {
   const onReload = () => {
@@ -23,7 +23,6 @@ function App() {
   const killFormikContact = taskId => {
     setContacts(prev => [...prev.filter(contact => contact.id !== taskId)]);
   };
-  console.log(contacts);
   const visibleContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -44,12 +43,12 @@ function App() {
 
       <div>
         <h1>PhonebookFormik</h1>
-        <FormikContactForm
+        <ContactForm
           formValidation={formValidation}
           onSubmit={formikHandleSubmit}
         />
-        <FormikSearchBox value={search} onSearch={setSearch} />
-        <FormikContactList
+        <SearchBox value={search} onSearch={setSearch} />
+        <ContactList
           contacts={visibleContacts}
           onDelete={killFormikContact}
         />

@@ -1,7 +1,7 @@
 import s from './FormikForm.module.css';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { formValidation } from './formValidation';
-export const FormikContactForm = ({ onSubmit }) => {
+export const ContactForm = ({ onSubmit }) => {
   const initialValues = { name: '', number: '' };
   return (
     <Formik
